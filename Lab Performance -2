@@ -1,0 +1,12 @@
+Task-1:
+
+Imagine you are developing a Java application for a car rental agency. In this system, you have a class called Vehicle representing general properties and behaviors of vehicles.
+Additionally, you have a subclass called Car, which extends the Vehicle class and adds specific features related to cars, such as the number of doors and the type of fuel.
+While implementing methods in the Car class, you find yourself needing to differentiate between local variables, instance variables, and superclass variables.
+1.	Explain the role and usage of the super keyword in Java. Provide examples illustrating how super can be used to access superclass members and invoke superclass constructors within a subclass like Car.
+2.	Describe the significance of the this keyword in Java and how it differs from super. 
+Give examples demonstrating the use of this to refer to instance variables and methods within the same class, and discuss scenarios where using this is necessary for disambiguation or clarification.
+
+Task-2: 
+a.	Recall the basic principles of exception handling in Java, give example of try-catch blocks and the handling of checked exception. 
+b.  Write a program to demonstrate Interface and implements multiple interface in a java.
