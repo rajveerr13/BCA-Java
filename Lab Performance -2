@@ -10,3 +10,175 @@ Give examples demonstrating the use of this to refer to instance variables and m
 Task-2: 
 a.	Recall the basic principles of exception handling in Java, give example of try-catch blocks and the handling of checked exception. 
 b.  Write a program to demonstrate Interface and implements multiple interface in a java.
+
+
+Task:-1
+1. Usage of the super Keyword:
+
+The super keyword in Java is used to refer to the immediate parent class object. It is used to differentiate between superclass members and subclass members, particularly when they have the same name. super can be used in two contexts:
+
+a. Accessing Superclass Members: You can use super to access superclass members (variables and methods) from within a subclass. This is useful when you want to access overridden methods or fields of the superclass.
+class Vehicle {
+    String brand = "Toyota";
+
+    void display() {
+        System.out.println("Inside Vehicle class");
+    }
+}
+
+class Car extends Vehicle {
+    String brand = "Honda";
+
+    void display() {
+        super.display(); // Calling superclass method
+        System.out.println("Inside Car class");
+        System.out.println("Brand: " + super.brand); // Accessing superclass variable
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.display();
+    }
+}
+
+b. Invoking Superclass Constructors: You can use super() to invoke the constructor of the superclass from the subclass constructor. 
+This is used when you want to initialize the superclass variables or perform some operations defined in the superclass constructor.
+class Vehicle {
+    int year;
+
+    Vehicle(int year) {
+        this.year = year;
+    }
+}
+
+class Car extends Vehicle {
+    String model;
+
+    Car(int year, String model) {
+        super(year); // Invoking superclass constructor
+        this.model = model;
+    }
+
+    void display() {
+        System.out.println("Year: " + year);
+        System.out.println("Model: " + model);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car(2022, "Civic");
+        car.display();
+    }
+}
+2. Significance of the this Keyword:
+
+The this keyword in Java is a reference to the current object within a method or constructor. It is primarily used to refer to instance variables and methods of the current class.
+
+a. Referring to Instance Variables and Methods: You can use this to refer to instance variables and methods within the same class. 
+This is particularly useful when you want to avoid naming conflicts between local variables and instance variables or when you want to call a method within the same class.
+class Car {
+    String brand;
+
+    Car(String brand) {
+        this.brand = brand; // Referring to instance variable
+    }
+
+    void display() {
+        System.out.println("Brand: " + this.brand); // Referring to instance variable
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car("Honda");
+        car.display();
+    }
+}
+b. Necessary for Disambiguation: this is necessary for disambiguation or clarification when there's a naming conflict between instance variables and method parameters or 
+when you want to call the constructor of the same class from within another constructor.
+class Car {
+    String brand;
+
+    Car(String brand) {
+        this.brand = brand; // Referring to instance variable
+    }
+
+    Car() {
+        this("Toyota"); // Invoking another constructor using this
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        System.out.println("Brand: " + car.brand);
+    }
+}
+Task-2:
+
+a. Basic Principles of Exception Handling in Java:
+
+In Java, exception handling allows you to deal with unexpected situations that may occur during program execution. The basic principles include:
+
+Try-Catch Blocks: You enclose the code that may throw exceptions within a try block. If an exception occurs, it's caught by one or more catch blocks.
+public class Main {
+    public static void main(String[] args) {
+        try {
+            FileReader file = new FileReader("file.txt");
+            // Code that may throw FileNotFoundException
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+        }
+    }
+}
+b. Program Demonstrating Interface and Implementing Multiple Interfaces:
+// Interface 1
+interface Engine {
+    void start();
+    void stop();
+}
+
+// Interface 2
+interface MusicPlayer {
+    void playMusic();
+    void stopMusic();
+}
+
+// Class implementing both interfaces
+class Car implements Engine, MusicPlayer {
+    @Override
+    public void start() {
+        System.out.println("Car started");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Car stopped");
+    }
+
+    @Override
+    public void playMusic() {
+        System.out.println("Music playing in the car");
+    }
+
+    @Override
+    public void stopMusic() {
+        System.out.println("Music stopped");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.start();
+        car.playMusic();
+        car.stopMusic();
+        car.stop();
+    }
+}
+
+
+Checked Exceptions: These are exceptions that the compiler requires you to handle explicitly using try-catch blocks or by declaring them in the method signature with throws.
